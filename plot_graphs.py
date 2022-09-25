@@ -59,6 +59,24 @@ def train_model_with_hyperparam(digits,target_value):
     metrics_df.set_index('hyperparameter',inplace=True)
     print(metrics_df)
     print('')
+    print("for training dataset:")
+    print('Mean of the Accuracy train: ',metrics_df['train'].mean())
+    print('Median of the accuracy train:',np.median(metrics_df['train']))
+    print('min of the accuracy train:',np.min(metrics_df['train']))
+    print('max of the accuracy train:',np.max(metrics_df['train']))
+    print('')
+    print("for test dataset:")
+    print('Mean of the Accuracy test: ',metrics_df['test'].mean())
+    print('Median of the accuracy test:',np.median(metrics_df['test']))
+    print('min of the accuracy test:',np.min(metrics_df['test']))
+    print('max of the accuracy test:',np.max(metrics_df['test']))
+    print('')
+    print("for training dataset:")
+    print('Mean of the Accuracy dev: ',metrics_df['dev'].mean())
+    print('Median of the accuracy dev:',np.median(metrics_df['dev']))
+    print('min of the accuracy dev:',np.min(metrics_df['dev']))
+    print('max of the accuracy dev:',np.max(metrics_df['dev']))
+    print('')
     print(f'Best Hyperparams : C : {c}, gamma : {gamma}')
     print(f'Accuracy of Training set with the best Model: {accuracy_score(y_train,best_model.predict(X_train))}')
     print(f'Accuracy of Dev set with the best Model: {accuracy_score(y_dev,best_model.predict(X_dev))}')
@@ -69,8 +87,8 @@ if __name__ == "__main__":
     digits = datasets.load_digits()
 
     # setting the width and height of the image
-    x=8
-    y=8
+    x=4
+    y=7
     data = []
     for image_data in digits.images:
         resized_img = resize(image_data, (x, y),anti_aliasing=True)
